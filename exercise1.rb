@@ -30,6 +30,28 @@ if n.length > 1 and check_next_number(n)
   # If the last number is greater than the one before it, always swap
   if n[limit] > n[limit - 1]
     swap(n, limit, limit - 1)
+  else
+    new = []
+    done = false
+    (limit-2).downto(0).each do |i|
+      if n[i] < n[i+1]
+        puts "Found different at #{n[i]}. Limit #{limit}"
+        limit.downto(0).each do |j|
+          puts "Testing #{n[j]}"
+          if n[j] > n[i]
+            puts "Found new significant digit #{n[j]}"
+            aux = n.delete_at(j)
+            n.sort!
+            n.insert(0, aux)
+            puts "done"
+            done = true
+            break
+          end
+        end
+        puts "looping"
+        break if done
+      end
+    end
   end
   puts "Next number is #{n.join("")}"
 else
