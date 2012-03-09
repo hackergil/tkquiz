@@ -11,6 +11,7 @@ def swap(n, p1, p2)
     n[p2] = aux
 end
 
+# Checks that we can actually get a combination from the given number
 def check_next_number(n)
   has_next_number = false
   (n.length - 1).times do |i|
@@ -31,24 +32,21 @@ if n.length > 1 and check_next_number(n)
   if n[limit] > n[limit - 1]
     swap(n, limit, limit - 1)
   else
-    new = []
     done = false
     (limit-2).downto(0).each do |i|
       if n[i] < n[i+1]
-        puts "Found different at #{n[i]}. Limit #{limit}"
-        limit.downto(0).each do |j|
-          puts "Testing #{n[j]}"
-          if n[j] > n[i]
-            puts "Found new significant digit #{n[j]}"
-            aux = n.delete_at(j)
-            n.sort!
-            n.insert(0, aux)
-            puts "done"
+        right = n.slice(i, limit)
+        left = n.slice(0, i)
+        (right.length-1).downto(0).each do |j|
+          if right[j] > n[i]
+            aux = right.delete_at(j)
+            right.sort!
+            right.insert(0, aux)
             done = true
             break
           end
         end
-        puts "looping"
+        n = left + right
         break if done
       end
     end
