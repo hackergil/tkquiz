@@ -12,6 +12,10 @@ class Exercise1
   end
 
   def get_next_number(input)
+    if input.nil? or input < 0
+      puts "Please provide a valid integer"
+      return nil
+    end
     puts "Provided number is #{input}"
     n = input.to_s.scan(/\d/)
     # First, check if we can get a number

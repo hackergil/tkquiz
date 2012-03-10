@@ -25,12 +25,13 @@ class Exercise1_test < Test::Unit::TestCase
     assert_equal(62378, @calculator.get_next_number(38762))
   end
 
+  # Negative numbers not supported. Period.
   def test_fail_with_negative_numbers
-    assert(true)
+    assert_nil(@calculator.get_next_number -1)
   end
 
   def test_fail_if_number_not_provided
-    assert(true)
+    assert_nil(@calculator.get_next_number nil)
   end
 
 end
