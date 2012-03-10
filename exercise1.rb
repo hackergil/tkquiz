@@ -19,7 +19,7 @@ class Exercise1
     puts "Provided number is #{input}"
     n = input.to_s.scan(/\d/)
     # First, check if we can get a number
-    if n.length > 1 and check_next_number(n)
+    if n.length > 1
       limit = n.length - 1
       # If the last number is greater than the one before it, always swap
       if n[limit] > n[limit - 1]
@@ -62,18 +62,5 @@ class Exercise1
     n[p2] = aux
   end
 
-  # Checks that we can actually get a combination from the given number
-  def check_next_number(n)
-    has_next_number = false
-    (n.length - 1).times do |i|
-      if n[i] < n[i + 1]
-        has_next_number = true
-      end
-    end
-    has_next_number
-  end
-
 end
-
-#Exercise1.new.get_next_number ARGV[0]
 
