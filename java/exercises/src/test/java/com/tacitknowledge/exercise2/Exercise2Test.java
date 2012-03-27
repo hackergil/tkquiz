@@ -1,4 +1,4 @@
-package test.java;
+package test.java.com.tacitknowledge.exercise2;
 
 import main.java.com.tacitknowledge.exercise2.Exercise2;
 import org.junit.Before;
