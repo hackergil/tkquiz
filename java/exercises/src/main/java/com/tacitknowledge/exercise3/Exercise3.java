@@ -11,7 +11,21 @@ package main.java.com.tacitknowledge.exercise3;
 public class Exercise3 {
 
     public Integer getDigitsSumOfFactorialNumber(Integer number) {
-        //TODO Implement
-        return null;
+        int accumulator = 1;
+        int sum = 0;
+        if(number != null && number > 1)
+        {
+            for(int i=1; i <= number; i++)
+            {
+                accumulator *= i;
+            }
+            String s = String.valueOf(accumulator);
+            for(int i =0; i<s.length(); i++)
+            {
+                sum += Character.getNumericValue(s.charAt(i));
+            }
+            return sum;
+        }
+        return accumulator;
     }
 }

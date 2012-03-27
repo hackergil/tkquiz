@@ -4,7 +4,9 @@ import main.java.com.tacitknowledge.exercise3.Exercise3;
 import org.junit.Before;
 import org.junit.Test;
 
-import static junit.framework.Assert.assertNull;
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.assertTrue;
 
 /**
  * @author Gilberto Alvarado(galvarado@tacitknowledge.com)
@@ -21,14 +23,22 @@ public class Exercise3Test
     }
 
     @Test
-    public void shouldGetFactorial()
+    public void shouldGetSumOfFactorial()
     {
+        Integer result = exercise3.getDigitsSumOfFactorialNumber(4);
+        assertNotNull(result);
+        assertTrue(result > 0);
+        assertEquals(6, result.intValue());
+        result = exercise3.getDigitsSumOfFactorialNumber(10);
+        assertEquals(27, result.intValue());
     }
 
     @Test
-    public void shouldReturnNull()
+    public void shouldReturnDefaultValue()
     {
-        assertNull(exercise3.getDigitsSumOfFactorialNumber(0));
+        Integer result = exercise3.getDigitsSumOfFactorialNumber(0);
+        assertNotNull(result);
+        assertEquals(1, result.intValue());
     }
 
 
