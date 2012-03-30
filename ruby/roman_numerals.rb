@@ -9,6 +9,25 @@
 # Author: Gilberto Alvarado (galvarado@tacitknowledge.com)
 class RomanNumerals
 
+  @@symbols = [
+    {
+      'low' => 'I',
+      'middle' => 'V',
+      'high' => 'X'
+    },
+    {
+      'low' => 'X',
+      'middle' => 'L',
+      'high' => 'C'
+    },
+    {
+      'low' => 'C',
+      'middle' => 'D',
+      'high' => 'M'
+    },
+  ]
+
+  # Converts a number to its roman representation
   def convert(number)
 
     if number.nil? or !number.is_a? Integer
@@ -19,17 +38,18 @@ class RomanNumerals
       return "Romans did not have numbers above 3k"
     end
 
-    digits = number.to_s.scan(/\d/)
+    if number<=0
+      return "Romans did not know there was a zero :)"
+    end
+
+    digits = number.to_s.scan(/\d/).reverse
 
     result =""
 
-    symbols = {
-      'low' => "I",
-      'middle' => "V",
-      'high' => 'X'
-    }
-
-    result+=convert_digit(number, symbols)
+    (digits.length).times do |i|
+      digit_output = convert_digit(digits[i].to_i, @@symbols[i])
+      result = digit_output + result
+    end
     result
   end
 
