@@ -17,7 +17,6 @@ class RomanNumeralsTest < Test::Unit::TestCase
     assert_equal("VI", @roman.convert(6))
     assert_equal("VIII", @roman.convert(8))
     assert_equal("IX", @roman.convert(9))
-    assert_equal("X", @roman.convert(10))
   end
 
     def test_valid_number

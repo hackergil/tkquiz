@@ -19,33 +19,43 @@ class RomanNumerals
       return "Romans did not have numbers above 3k"
     end
 
-    low_symbol="I"
-    middle_symbol="V"
-    high_symbol="X"
+    digits = number.to_s.scan(/\d/)
 
-    result = ""
+    result =""
 
-    case number
-      when 1..3
-        number.times do |i|
-          result.concat(low_symbol)
-        end
-      when 4
-        result.concat(low_symbol).concat(middle_symbol)
-      when 5
-        result.concat(middle_symbol)
-      when 6..8
-        result.concat(middle_symbol)
-        (number - 5).times do |i|
-          result.concat(low_symbol)
-        end
-      when 9
-        result.concat(low_symbol).concat(high_symbol)
-      when 10
-        result.concat(high_symbol)
-    end
+    symbols = {
+      'low' => "I",
+      'middle' => "V",
+      'high' => 'X'
+    }
 
+    result+=convert_digit(number, symbols)
     result
   end
+
+  # Converts a digit to its roman representation according to specified symbols
+  def convert_digit(number, symbols)
+      result = ""
+
+      case number
+        when 1..3
+          number.times do |i|
+            result.concat(symbols['low'])
+          end
+        when 4
+          result.concat(symbols['low']).concat(symbols['middle'])
+        when 5
+          result.concat(symbols['middle'])
+        when 6..8
+          result.concat(symbols['middle'])
+          (number - 5).times do |i|
+            result.concat(symbols['low'])
+          end
+        when 9
+          result.concat(symbols['low']).concat(symbols['high'])
+      end
+
+      result
+    end
 
 end
