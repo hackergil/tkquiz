@@ -10,6 +10,16 @@ class RomanNumeralsTest < Test::Unit::TestCase
     @roman= RomanNumerals.new
   end
 
+  def test_convert
+    assert_equal("I", @roman.convert(1))
+    assert_equal("III", @roman.convert(3))
+    assert_equal("IV", @roman.convert(4))
+    assert_equal("VI", @roman.convert(6))
+    assert_equal("VIII", @roman.convert(8))
+    assert_equal("IX", @roman.convert(9))
+    assert_equal("X", @roman.convert(10))
+  end
+
     def test_valid_number
     result = @roman.convert(nil)
     assert_not_nil result
