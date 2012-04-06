@@ -35,6 +35,10 @@ class RomanNumeralsTest < Test::Unit::TestCase
     assert_equal("DCCLXVIII", @roman.convert(768))
     assert_equal("CM", @roman.convert(900))
 
+    assert_equal('M', @roman.convert(1000))
+    assert_equal('MDCCCLXXVIII', @roman.convert(1878))
+    assert_equal('MMM', @roman.convert(3000))
+
   end
 
     def test_valid_number

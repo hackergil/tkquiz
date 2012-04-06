@@ -5,7 +5,7 @@
 #     3 -> III
 #     10 --> X
 #     7 --> VII
-#etc.
+# etc.
 # Author: Gilberto Alvarado (galvarado@tacitknowledge.com)
 class RomanNumerals
 
@@ -25,6 +25,9 @@ class RomanNumerals
       'middle' => 'D',
       'high' => 'M'
     },
+    {
+      'low' => 'M'
+    }
   ]
 
   # Converts a number to its roman representation
@@ -34,7 +37,7 @@ class RomanNumerals
       return "You have to provide a valid number"
     end
 
-    if number>=3000
+    if number>3000
       return "Romans did not have numbers above 3k"
     end
 
